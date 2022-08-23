@@ -61,5 +61,16 @@ module.exports = {
         },
       },
     },
+    // ...
+    aem: {
+      location: '@bounteous/vue-storefront-aem/server',
+      configuration: {
+        serviceURL: 'http://192.168.0.231:4502',
+        endpoint: '/content/_cq_graphql/global/endpoint.json',
+        // Provide credentials if necessary (for example on Author)
+        // See https://github.com/adobe/aem-headless-client-nodejs for more info.
+        auth: [process.env.AEM_USER, process.env.AEM_PW]
+      },
+    },
   },
 };
