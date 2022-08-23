@@ -29,7 +29,7 @@ const {
 
 export default () => {
   const baseConfig = {
-    ssr: true,
+    ssr: false,
     dev: process.env.VSF_NUXT_APP_ENV !== 'production',
     server: {
       port: process.env.VSF_NUXT_APP_PORT,
@@ -69,8 +69,20 @@ export default () => {
       '@nuxtjs/style-resources',
       '@nuxtjs/device',
       ['@vue-storefront/nuxt', {
+        useRawSource: {
+          dev: [
+            // ...
+            '@bounteous/vue-storefront-aem',
+            // ...
+            ],
+          prod: [
+            // ...
+            '@bounteous/vue-storefront-aem',
+            // ...
+            ],
+        },
         // selectively disabling certain @vue-storefront/core plugins for migration
-        context: false,
+        context: true,
         logger: false,
         ssr: false,
         sfui: false,
@@ -98,6 +110,7 @@ export default () => {
       '@pinia/nuxt',
     ],
     modules: [
+      '@bounteous/vue-storefront-aem/nuxt',
       '~/modules/catalog',
       '~/modules/customer',
       '~/modules/wishlist',
